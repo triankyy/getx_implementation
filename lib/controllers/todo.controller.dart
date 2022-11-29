@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart' as http;
-import 'package:get/get.dart';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart' hide Response;
 import 'package:getx_implementation/models/todo.model.dart';
 // import 'package:getx_implementation/services/todo.service.dart';
 
@@ -15,10 +15,10 @@ class TodoController extends GetxController {
   }
 
   Future<void> fetchTodo() async {
-    http.Dio dio = http.Dio();
+    Dio dio = Dio();
     print("jalan");
    try {
-      http.Response response = await dio.get("https://jsonplaceholder.typicode.com/todos");
+      Response response = await dio.get("https://jsonplaceholder.typicode.com/todos");
       if (response.statusCode == 200) {
         List data = response.data;
         todoList.value = data.map((e) => Todos.fromJson(e)).toList();
