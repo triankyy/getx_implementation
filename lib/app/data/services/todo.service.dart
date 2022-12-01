@@ -15,7 +15,7 @@ class TodoService {
     }
   }
 
-  Future<TodoModel> getId(String id) async {
+  Future<TodoModel> getId(num id) async {
     try {
       Response response = await httpClient.get("/todos/$id");
       return TodoModel.fromJson(response.data);

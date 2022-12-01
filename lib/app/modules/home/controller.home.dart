@@ -21,5 +21,12 @@ class HomeController extends GetxController {
 
   Future<void> getAllTodo() async => todoList.value = await todoService.getAll();
 
-  Future<void> searchTodo() async => todo.value = await todoService.getId(searchController.text);
+  Future<void> searchTodo() async {
+    if (!GetUtils.isNum(searchController.text)) {
+      Get.snackbar("Search Error", "Search must be an number");
+      return;
+    }
+    num param = num.parse(searchController.text);
+    todo.value = await todoService.getId(param);
+  }
 }

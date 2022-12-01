@@ -30,7 +30,7 @@ class HttpClient {
       await EasyLoading.dismiss();
       return response;
     } on DioError catch (e) {
-      print(e);
+      Log.e(e.message);
       EasyLoading.showError(e.message);
       rethrow;
     }
@@ -46,6 +46,7 @@ class HttpClient {
   }) async {
     try {
       Log.i("POST | ${ApiConstants.baseUrl}$path");
+      Log.d("Request : ${data ?? "{}"}");
       await EasyLoading.show(
         status: 'mohon tunggu...',
         maskType: EasyLoadingMaskType.black,
@@ -62,7 +63,7 @@ class HttpClient {
       await EasyLoading.dismiss();
       return response;
     } on DioError catch (e) {
-      print(e);
+      Log.e(e.message);
       EasyLoading.showError(e.message);
       rethrow;
     }

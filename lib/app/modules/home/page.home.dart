@@ -24,6 +24,7 @@ class HomeScreen extends GetView<HomeController> {
           IconButton(
             onPressed: () {
               controller.isSearch.value = true;
+              // controller.todo.close();
             }, 
             icon: const Icon(Icons.search)
           )
